@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elige tu camino</title>
+    <style>
+        /* Estilo básico para el cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif; /* Fuente utilizada en la página */
+            text-align: center; /* Centra el contenido en la página */
+            margin: 250px; /* Agrega un margen alrededor del contenido */
+            background-color: gray; /* Color de fondo */
+        }
+        /* Estilo para el título principal */
+        h1 {
+            font-size: 100px; /* Tamaño para el título */
+            color: green; /* Color para el título */
+        }
+        /* Estilo para el párrafo que da instrucciones */
+        p {
+            font-size: 50px; /* Tamaño para el párrafo */
+            color: red; /* Color para el texto */
+        }
+        /* Estilo para los botones */
+        button {
+            margin: 10px; /* Espacio entre los botones */
+            padding: 10px 20px; /* Espaciado interno del botón */
+            font-size: 20px; /* Tamaño del texto en el botón */
+            cursor: pointer; /* Cambia el cursor cuando pasa sobre el botón */
+            background-color: blue; /* Color de fondo del botón */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Título principal que da la bienvenida al usuario -->
+    <h1>Bienvenido a tu viaje en el desarrollo web</h1>
+    <p>Elige tu camino:</p>
+    <!-- Botones para elegir Front-End o Back-End -->
+    <button onclick="seleccionarArea('Front-End')">Front-End</button>
+    <button onclick="seleccionarArea('Back-End')">Back-End</button>
+    
+    <script>
+        // Función que se ejecuta al seleccionar una de las áreas (Front-End o Back-End)
+        function seleccionarArea(area) {
+            let tecnologia; // Variable para almacenar la tecnología elegida
+            // Si se selecciona Front-End
+            if (area === 'Front-End') {
+                tecnologia = prompt("¿Quieres aprender React o Vue?");
+                // Validación para asegurarse de que la respuesta sea React o Vue
+                while (tecnologia != "React" && tecnologia != "Vue"){
+                    tecnologia = prompt("Ingreso errone, opciones React o Vue?"); 
+                }
+            } else {
+                // Si se selecciona Back-End
+                tecnologia = prompt("¿Quieres aprender C# o Java?"); 
+                // Validación para asegurarse de que la respuesta sea C# o Java
+                while (tecnologia != "C#" && tecnologia != "Java"){
+                    tecnologia = prompt("Ingreso errone, opciones C# o Java?");
+                }
+            }
+            
+            // Pregunta por el tipo de camino (especializarse o ser Fullstack)
+            let camino = prompt("¿Quieres especializarte en " + area + " o convertirte en Fullstack?");
+            // Validación para asegurarse de que la respuesta sea válida
+            while (camino != area && camino != "Fullstack"){
+                    camino = prompt("Ingreso errone, opciones " + area + " o Fullstack");
+                }
+            // Muestra una alerta con las elecciones del usuario
+            alert("Has elegido el camino de " + area + " con " + tecnologia + " y deseas " + camino + ".");
+            
+            // Crear un arreglo para almacenar tecnologías adicionales que el usuario quiera aprender
+            let tecnologiasExtras = [];
+            let respuesta;
+            do {
+                // Pregunta si el usuario desea aprender alguna otra tecnología
+                respuesta = prompt("¿Hay alguna otra tecnología que te gustaría aprender? (Escribe la tecnología o 'ok' para salir)");
+                // Si la respuesta no es 'ok', la tecnología se agrega al arreglo
+                if (respuesta.toLowerCase() !== 'ok') {
+                    tecnologiasExtras.push(respuesta);
+                    alert("Interesante elección! " + respuesta + " es una gran tecnología para aprender.");
+                }
+            } while (respuesta.toLowerCase() !== 'ok'); // Continúa pidiendo tecnologías hasta que el usuario ingrese 'ok'
+            
+            // Muestra una alerta final indicando que el viaje está definido
+            alert("Tu viaje ha sido definido. ¡Mucho éxito en tu aprendizaje!");
+        }
+    </script>
+</body>
+</html>
